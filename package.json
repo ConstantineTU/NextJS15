@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroui/navbar": "^2.2.29",
-    "@heroui/react": "^2.8.9",
+    "@heroui/react": "^2.8.0-beta.10",
     "@heroui/system": "^2.4.27",
     "@heroui/theme": "^2.4.26",
     "framer-motion": "^12.34.3",
