@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/UI/header";
 import { Providers } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
+import { layoutConfig } from "@/config/layout.config";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +35,21 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          {children}
+          <main
+            className={`
+              flex flex-col 
+              h-[calc(100vh-${layoutConfig.headerHeight}-${layoutConfig.footerHeight})] 
+              w-full justify-start items-center
+              `}
+          >
+            {children}
+          </main>
+          <footer
+            className={`flex justify-center items-center`}
+            style={{ height: layoutConfig.footerHeight }}
+          >
+            <p>{siteConfig.description}</p>
+          </footer>
         </Providers>
       </body>
     </html>
