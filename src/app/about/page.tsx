@@ -1,5 +1,9 @@
 const About = () => {
-  return <h1>About, hello world!</h1>;
+  return (
+    <div>
+      <h1>О нас</h1>
+    </div>
+  );
 };
 
 export default About;
