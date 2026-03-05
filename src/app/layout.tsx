@@ -38,9 +38,11 @@ export default function RootLayout({
           <main
             className={`
               flex flex-col 
-              h-[calc(100vh-${layoutConfig.headerHeight}-${layoutConfig.footerHeight})] 
               w-full justify-start items-center
               `}
+            style={{
+              height: `calc(100vh - ${layoutConfig.headerHeight} - ${layoutConfig.footerHeight})`,
+            }}
           >
             {children}
           </main>
