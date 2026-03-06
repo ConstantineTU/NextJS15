@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 + Prisma + PostgreSQL
 
-## Getting Started
+This project is built with **Next.js 15**, **React 19**, **Prisma ORM**, and **PostgreSQL**.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 15 (App Router)
+- React 19
+- Prisma ORM
+- PostgreSQL
+- TailwindCSS
+- HeroUI
+- Framer Motion
+
+---
+
+# Getting Started
+
+Follow these steps to run the project locally.
+
+## 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+```
+
+---
+
+## 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 3. Setup environment variables
+
+Create a `.env` file in the root of the project.
+
+Example:
+
+```env
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/next15?schema=public"
+```
+
+Make sure PostgreSQL is installed and running locally.
+
+---
+
+## 4. Setup the database
+
+Push the Prisma schema to your PostgreSQL database:
+
+```bash
+npx prisma db push
+```
+
+Optional: open Prisma Studio to inspect the database.
+
+```bash
+npx prisma studio
+```
+
+---
+
+## 5. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev      # Start development server with Turbopack
+npm run build    # Build production version
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Database
 
-## Deploy on Vercel
+This project uses **Prisma ORM** with **PostgreSQL**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To regenerate Prisma client:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx prisma generate
+```
+
+To apply schema changes:
+
+```bash
+npx prisma db push
+```
+
+---
+
+# Deployment
+
+Recommended platform: **Vercel**.
+
+Make sure to configure the `DATABASE_URL` environment variable in the deployment environment.
+
+---
+
+# License
+
+MIT
