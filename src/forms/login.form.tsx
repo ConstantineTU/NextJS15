@@ -3,6 +3,8 @@
 import { Button, Form, Input } from "@heroui/react";
 import { FormEvent, useState } from "react";
 
+import { signInWithCredentials } from "@/actions/sign-in";
+
 interface LoginFormProps {
   onClose: () => void;
 }
@@ -17,6 +19,13 @@ const LoginForm = ({ onClose }: LoginFormProps) => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted:", formData);
+
+    const result = await signInWithCredentials(
+      formData.email,
+      formData.password,
+    );
+
+    console.log("result", result);
 
     onClose();
   };

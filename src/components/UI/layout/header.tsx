@@ -14,6 +14,7 @@ import { useState } from "react";
 
 import { siteConfig } from "@/config/site.config";
 import { layoutConfig } from "@/config/layout.config";
+import { signOutFunc } from "@/actions/sign-out";
 
 import RegistrationModal from "../modals/registration.modal";
 import LoginModal from "../modals/login.modal";
@@ -63,6 +64,10 @@ export default function Header() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  const handleSignOut = async () => {
+    await signOutFunc();
+  };
+
   return (
     <Navbar style={{ height: layoutConfig.headerHeight }}>
       <NavbarBrand>
@@ -77,6 +82,17 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Button
+            as={Link}
+            color="secondary"
+            href="#"
+            variant="flat"
+            onPress={handleSignOut}
+          >
+            Выйти
+          </Button>
+        </NavbarItem>
         <NavbarItem className="hidden lg:flex">
           <Button
             as={Link}

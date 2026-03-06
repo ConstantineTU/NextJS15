@@ -39,6 +39,7 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
         name="email"
         placeholder="Введите email"
         type="email"
+        autoComplete="email"
         value={formData.email}
         classNames={{
           inputWrapper: "bg-default-100",
@@ -59,6 +60,8 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
       <Input
         isRequired
         name="password"
+        type="password"
+        autoComplete="new-password"
         labelPlacement="outside"
         placeholder="Введите пароль"
         value={formData.password}
@@ -81,6 +84,8 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
       <Input
         isRequired
         name="confirmPassword"
+        type="password"
+        autoComplete="new-password"
         labelPlacement="outside"
         placeholder="Подтвердите пароль"
         value={formData.confirmPassword}

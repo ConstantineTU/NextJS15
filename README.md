@@ -1,6 +1,6 @@
-# Next.js 15 + Prisma + PostgreSQL
+# Next.js 15 + Prisma + PostgreSQL + Auth.js
 
-This project is built with **Next.js 15**, **React 19**, **Prisma ORM**, and **PostgreSQL**.
+This project is built with **Next.js 15**, **React 19**, **Prisma ORM**, **PostgreSQL**, and **Auth.js** for authentication.
 
 ## Tech Stack
 
@@ -8,6 +8,9 @@ This project is built with **Next.js 15**, **React 19**, **Prisma ORM**, and **P
 - React 19
 - Prisma ORM
 - PostgreSQL
+- Auth.js / NextAuth v5
+- Zod (validation)
+- bcryptjs (password hashing)
 - TailwindCSS
 - HeroUI
 - Framer Motion
@@ -43,19 +46,46 @@ Example:
 
 ```env
 DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/next15?schema=public"
+
+# Auth.js secret
+AUTH_SECRET=""
+
+AUTH_URL="http://localhost:3000"
 ```
 
 Make sure PostgreSQL is installed and running locally.
 
 ---
 
-## 4. Setup the database
+## 4. Generate Auth Secret
+
+This project uses **Auth.js (NextAuth v5)** for authentication.
+
+Generate a secret for your local environment:
+
+```bash
+npx auth secret
+```
+
+Add the generated value to your `.env` file:
+
+```env
+AUTH_SECRET="your_generated_secret"
+```
+
+⚠️ Do not commit secrets to the repository.
+
+````
+
+---
+
+## 5. Setup the database
 
 Push the Prisma schema to your PostgreSQL database:
 
 ```bash
 npx prisma db push
-```
+````
 
 Optional: open Prisma Studio to inspect the database.
 
@@ -65,7 +95,7 @@ npx prisma studio
 
 ---
 
-## 5. Run the development server
+## 6. Run the development server
 
 ```bash
 npm run dev
@@ -106,13 +136,45 @@ To apply schema changes:
 npx prisma db push
 ```
 
+Optional database GUI:
+
+```bash
+npx prisma studio
+```
+
+````
+
+---
+
+# Environment Example
+
+Create a `.env` file based on the following template:
+
+```env
+DATABASE_URL="postgresql://postgres:PASSWORD@localhost:5432/next15?schema=public"
+AUTH_SECRET=""
+AUTH_URL="http://localhost:3000"
+````
+
+---
+
+# Validation & Security
+
+Form validation is handled with **Zod**.
+
+Passwords are hashed using **bcryptjs** before being stored in the database.
+
 ---
 
 # Deployment
 
 Recommended platform: **Vercel**.
 
-Make sure to configure the `DATABASE_URL` environment variable in the deployment environment.
+Make sure to configure the following environment variables in the deployment environment:
+
+- `DATABASE_URL`
+- `AUTH_SECRET`
+- `AUTH_URL`
 
 ---
 
