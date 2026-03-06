@@ -17,6 +17,7 @@
     "@heroui/system": "^2.4.27",
     "@heroui/theme": "^2.4.26",
     "@prisma/client": "^7.4.2",
+    "@prisma/adapter-pg": "^7.4.2",
     "framer-motion": "^12.34.3",
     "next": "15.5.12",
     "pg": "^8.20.0",
@@ -25,7 +26,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@prisma/adapter-pg": "^7.4.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

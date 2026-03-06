@@ -3,6 +3,8 @@
 import { Button, Form, Input } from "@heroui/react";
 import { FormEvent, useState } from "react";
 
+import { registerUser } from "@/actions/register";
+
 interface RegistrationFormProps {
   onClose: () => void;
 }
@@ -22,6 +24,10 @@ const RegistrationForm = ({ onClose }: RegistrationFormProps) => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted:", formData);
+
+    const result = await registerUser(formData);
+
+    console.log("result", result);
 
     onClose();
   };
