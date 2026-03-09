@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Form, Input } from "@heroui/react";
-import { FormEvent, useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 import { signInWithCredentials } from "@/actions/sign-in";
 
@@ -15,17 +15,21 @@ const LoginForm = ({ onClose }: LoginFormProps) => {
     password: "",
     confirmPassword: "",
   });
+  const [authError, setAuthError] = useState<string | null>(null);
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log("Form submitted:", formData);
+    setAuthError(null);
 
     const result = await signInWithCredentials(
       formData.email,
       formData.password,
     );
 
-    console.log("result", result);
+    if (result?.error) {
+      setAuthError(result.error);
+      return;
+    }
 
     onClose();
   };
@@ -75,6 +79,9 @@ const LoginForm = ({ onClose }: LoginFormProps) => {
           return null;
         }}
       />
+      {authError && (
+        <p className="text-danger text-sm">{authError}</p>
+      )}
       <div className="flex w-[100%] gap-4 items-center pt-8 justify-end">
         <Button variant="light" onPress={onClose}>
           Отмена
